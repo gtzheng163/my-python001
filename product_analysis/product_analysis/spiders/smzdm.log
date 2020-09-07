@@ -1,0 +1,258 @@
+2020-09-07 11:35:50 [scrapy.utils.log] INFO: Scrapy 2.1.0 started (bot: product_analysis)
+2020-09-07 11:35:50 [scrapy.utils.log] INFO: Versions: lxml 4.5.0.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.6.0, w3lib 1.21.0, Twisted 20.3.0, Python 3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)], pyOpenSSL 19.1.0 (OpenSSL 1.1.1g  21 Apr 2020), cryptography 2.9.2, Platform Windows-7-6.1.7601-SP1
+2020-09-07 11:35:50 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2020-09-07 11:35:50 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'product_analysis',
+ 'DOWNLOAD_DELAY': 1,
+ 'LOG_FILE': './smzdm.log',
+ 'NEWSPIDER_MODULE': 'product_analysis.spiders',
+ 'SPIDER_MODULES': ['product_analysis.spiders']}
+2020-09-07 11:35:50 [scrapy.extensions.telnet] INFO: Telnet Password: b02ec31d92815088
+2020-09-07 11:35:50 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2020-09-07 11:35:51 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2020-09-07 11:35:51 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2020-09-07 11:35:51 [scrapy.middleware] INFO: Enabled item pipelines:
+['product_analysis.pipelines.ProductAnalysisPipeline']
+2020-09-07 11:35:51 [scrapy.core.engine] INFO: Spider opened
+2020-09-07 11:35:51 [scrapy.core.engine] INFO: Closing spider (shutdown)
+2020-09-07 11:35:51 [scrapy.core.engine] ERROR: Scraper close failure
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 58, in insert_data
+    self.cur.executemany(sql, data_list)
+AttributeError: 'ProductAnalysisPipeline' object has no attribute 'cur'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\twisted\internet\defer.py", line 654, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 39, in close_spider
+    self.insert_data(self.data_list)
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 61, in insert_data
+    self.conn.rollback()
+AttributeError: 'ProductAnalysisPipeline' object has no attribute 'conn'
+2020-09-07 11:35:51 [scrapy.utils.signal] ERROR: Error caught on signal handler: <bound method CoreStats.spider_closed of <scrapy.extensions.corestats.CoreStats object at 0x000000000518DD08>>
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\utils\defer.py", line 161, in maybeDeferred_coro
+    result = f(*args, **kw)
+  File "d:\python\python venv\envir1\lib\site-packages\pydispatch\robustapply.py", line 55, in robustApply
+    return receiver(*arguments, **named)
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\extensions\corestats.py", line 31, in spider_closed
+    elapsed_time = finish_time - self.start_time
+TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
+2020-09-07 11:35:51 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'log_count/ERROR': 2, 'log_count/INFO': 8}
+2020-09-07 11:35:51 [scrapy.core.engine] INFO: Spider closed (shutdown)
+2020-09-07 11:35:51 [twisted] CRITICAL: Unhandled error in Deferred:
+2020-09-07 11:35:51 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+2020-09-07 11:41:15 [scrapy.utils.log] INFO: Scrapy 2.1.0 started (bot: product_analysis)
+2020-09-07 11:41:15 [scrapy.utils.log] INFO: Versions: lxml 4.5.0.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.6.0, w3lib 1.21.0, Twisted 20.3.0, Python 3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)], pyOpenSSL 19.1.0 (OpenSSL 1.1.1g  21 Apr 2020), cryptography 2.9.2, Platform Windows-7-6.1.7601-SP1
+2020-09-07 11:41:15 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2020-09-07 11:41:15 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'product_analysis',
+ 'DOWNLOAD_DELAY': 1,
+ 'LOG_FILE': './smzdm.log',
+ 'NEWSPIDER_MODULE': 'product_analysis.spiders',
+ 'SPIDER_MODULES': ['product_analysis.spiders']}
+2020-09-07 11:41:15 [scrapy.extensions.telnet] INFO: Telnet Password: c32778644432f774
+2020-09-07 11:41:15 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2020-09-07 11:41:16 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2020-09-07 11:41:16 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2020-09-07 11:41:16 [scrapy.middleware] INFO: Enabled item pipelines:
+['product_analysis.pipelines.ProductAnalysisPipeline']
+2020-09-07 11:41:16 [scrapy.core.engine] INFO: Spider opened
+2020-09-07 11:41:16 [scrapy.core.engine] INFO: Closing spider (shutdown)
+2020-09-07 11:41:16 [scrapy.core.engine] ERROR: Scraper close failure
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 58, in insert_data
+    self.cur.executemany(sql, data_list)
+AttributeError: 'ProductAnalysisPipeline' object has no attribute 'cur'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\twisted\internet\defer.py", line 654, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 39, in close_spider
+    self.insert_data(self.data_list)
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 61, in insert_data
+    self.conn.rollback()
+AttributeError: 'ProductAnalysisPipeline' object has no attribute 'conn'
+2020-09-07 11:41:16 [scrapy.utils.signal] ERROR: Error caught on signal handler: <bound method CoreStats.spider_closed of <scrapy.extensions.corestats.CoreStats object at 0x000000000518DF88>>
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\utils\defer.py", line 161, in maybeDeferred_coro
+    result = f(*args, **kw)
+  File "d:\python\python venv\envir1\lib\site-packages\pydispatch\robustapply.py", line 55, in robustApply
+    return receiver(*arguments, **named)
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\extensions\corestats.py", line 31, in spider_closed
+    elapsed_time = finish_time - self.start_time
+TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
+2020-09-07 11:41:16 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'log_count/ERROR': 2, 'log_count/INFO': 8}
+2020-09-07 11:41:16 [scrapy.core.engine] INFO: Spider closed (shutdown)
+2020-09-07 11:41:16 [twisted] CRITICAL: Unhandled error in Deferred:
+2020-09-07 11:41:16 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+2020-09-07 11:54:12 [scrapy.utils.log] INFO: Scrapy 2.1.0 started (bot: product_analysis)
+2020-09-07 11:54:12 [scrapy.utils.log] INFO: Versions: lxml 4.5.0.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.6.0, w3lib 1.21.0, Twisted 20.3.0, Python 3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)], pyOpenSSL 19.1.0 (OpenSSL 1.1.1g  21 Apr 2020), cryptography 2.9.2, Platform Windows-7-6.1.7601-SP1
+2020-09-07 11:54:12 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2020-09-07 11:54:12 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'product_analysis',
+ 'DOWNLOAD_DELAY': 1,
+ 'LOG_FILE': './smzdm.log',
+ 'NEWSPIDER_MODULE': 'product_analysis.spiders',
+ 'SPIDER_MODULES': ['product_analysis.spiders']}
+2020-09-07 11:54:12 [scrapy.extensions.telnet] INFO: Telnet Password: ee6c9601747d7c8c
+2020-09-07 11:54:12 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2020-09-07 11:54:12 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2020-09-07 11:54:12 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2020-09-07 11:54:12 [scrapy.middleware] INFO: Enabled item pipelines:
+['product_analysis.pipelines.ProductAnalysisPipeline']
+2020-09-07 11:54:12 [scrapy.core.engine] INFO: Spider opened
+2020-09-07 11:54:12 [scrapy.core.engine] INFO: Closing spider (shutdown)
+2020-09-07 11:54:12 [scrapy.core.engine] ERROR: Scraper close failure
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 58, in insert_data
+    self.cur.executemany(sql, data_list)
+AttributeError: 'ProductAnalysisPipeline' object has no attribute 'cur'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\twisted\internet\defer.py", line 654, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 39, in close_spider
+    self.insert_data(self.data_list)
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 61, in insert_data
+    self.conn.rollback()
+AttributeError: 'ProductAnalysisPipeline' object has no attribute 'conn'
+2020-09-07 11:54:12 [scrapy.utils.signal] ERROR: Error caught on signal handler: <bound method CoreStats.spider_closed of <scrapy.extensions.corestats.CoreStats object at 0x000000000518EF08>>
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\utils\defer.py", line 161, in maybeDeferred_coro
+    result = f(*args, **kw)
+  File "d:\python\python venv\envir1\lib\site-packages\pydispatch\robustapply.py", line 55, in robustApply
+    return receiver(*arguments, **named)
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\extensions\corestats.py", line 31, in spider_closed
+    elapsed_time = finish_time - self.start_time
+TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
+2020-09-07 11:54:12 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'log_count/ERROR': 2, 'log_count/INFO': 8}
+2020-09-07 11:54:12 [scrapy.core.engine] INFO: Spider closed (shutdown)
+2020-09-07 11:54:12 [twisted] CRITICAL: Unhandled error in Deferred:
+2020-09-07 11:54:12 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")

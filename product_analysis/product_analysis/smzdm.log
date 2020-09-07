@@ -1,0 +1,487 @@
+2020-09-07 11:34:45 [scrapy.utils.log] INFO: Scrapy 2.1.0 started (bot: product_analysis)
+2020-09-07 11:34:45 [scrapy.utils.log] INFO: Versions: lxml 4.5.0.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.6.0, w3lib 1.21.0, Twisted 20.3.0, Python 3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)], pyOpenSSL 19.1.0 (OpenSSL 1.1.1g  21 Apr 2020), cryptography 2.9.2, Platform Windows-7-6.1.7601-SP1
+2020-09-07 11:34:45 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2020-09-07 11:34:45 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'product_analysis',
+ 'DOWNLOAD_DELAY': 1,
+ 'LOG_FILE': './smzdm.log',
+ 'NEWSPIDER_MODULE': 'product_analysis.spiders',
+ 'SPIDER_MODULES': ['product_analysis.spiders']}
+2020-09-07 11:34:46 [scrapy.extensions.telnet] INFO: Telnet Password: b041ce7d523fffb9
+2020-09-07 11:34:46 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2020-09-07 11:34:47 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2020-09-07 11:34:47 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2020-09-07 11:34:47 [scrapy.middleware] INFO: Enabled item pipelines:
+['product_analysis.pipelines.ProductAnalysisPipeline']
+2020-09-07 11:34:47 [scrapy.core.engine] INFO: Spider opened
+2020-09-07 11:34:48 [scrapy.core.engine] INFO: Closing spider (shutdown)
+2020-09-07 11:34:48 [scrapy.core.engine] ERROR: Scraper close failure
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 58, in insert_data
+    self.cur.executemany(sql, data_list)
+AttributeError: 'ProductAnalysisPipeline' object has no attribute 'cur'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\twisted\internet\defer.py", line 654, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 39, in close_spider
+    self.insert_data(self.data_list)
+  File "D:\Python\python venv\my-python001\product_analysis\product_analysis\pipelines.py", line 61, in insert_data
+    self.conn.rollback()
+AttributeError: 'ProductAnalysisPipeline' object has no attribute 'conn'
+2020-09-07 11:34:48 [scrapy.utils.signal] ERROR: Error caught on signal handler: <bound method CoreStats.spider_closed of <scrapy.extensions.corestats.CoreStats object at 0x000000000515A088>>
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\utils\defer.py", line 161, in maybeDeferred_coro
+    result = f(*args, **kw)
+  File "d:\python\python venv\envir1\lib\site-packages\pydispatch\robustapply.py", line 55, in robustApply
+    return receiver(*arguments, **named)
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\extensions\corestats.py", line 31, in spider_closed
+    elapsed_time = finish_time - self.start_time
+TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
+2020-09-07 11:34:48 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'log_count/ERROR': 2, 'log_count/INFO': 8}
+2020-09-07 11:34:48 [scrapy.core.engine] INFO: Spider closed (shutdown)
+2020-09-07 11:34:48 [twisted] CRITICAL: Unhandled error in Deferred:
+2020-09-07 11:34:48 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "d:\python\python venv\envir1\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "d:\python\python venv\envir1\lib\site-packages\scrapy\crawler.py", line 89, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (1045, "Access denied for user 'Administrator'@'localhost' (using password: YES)")
+2020-09-07 11:56:36 [scrapy.utils.log] INFO: Scrapy 2.1.0 started (bot: product_analysis)
+2020-09-07 11:56:36 [scrapy.utils.log] INFO: Versions: lxml 4.5.0.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.6.0, w3lib 1.21.0, Twisted 20.3.0, Python 3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)], pyOpenSSL 19.1.0 (OpenSSL 1.1.1g  21 Apr 2020), cryptography 2.9.2, Platform Windows-7-6.1.7601-SP1
+2020-09-07 11:56:36 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2020-09-07 11:56:36 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'product_analysis',
+ 'DOWNLOAD_DELAY': 1,
+ 'LOG_FILE': './smzdm.log',
+ 'NEWSPIDER_MODULE': 'product_analysis.spiders',
+ 'SPIDER_MODULES': ['product_analysis.spiders']}
+2020-09-07 11:56:36 [scrapy.extensions.telnet] INFO: Telnet Password: 59562d28725abe28
+2020-09-07 11:56:36 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2020-09-07 11:56:36 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2020-09-07 11:56:36 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2020-09-07 11:56:36 [scrapy.middleware] INFO: Enabled item pipelines:
+['product_analysis.pipelines.ProductAnalysisPipeline']
+2020-09-07 11:56:36 [scrapy.core.engine] INFO: Spider opened
+2020-09-07 11:56:36 [root] INFO: Connected to mysql: 127.0.0.1 on port: 3306, using db: b'python_db1', charset is: utf8mb4
+2020-09-07 11:56:36 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2020-09-07 11:56:36 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2020-09-07 11:56:37 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/fenlei/qipaoshui/> (referer: None)
+2020-09-07 11:56:38 [smzdm] DEBUG: current product name is: 依能 西柚味 无糖无汽弱碱苏打水 饮料 500ml*15瓶 塑膜量贩装 *7件
+2020-09-07 11:56:38 [smzdm] INFO: first ten product url: https://www.smzdm.com/p/24593283/
+2020-09-07 11:56:38 [smzdm] DEBUG: current product name is: 雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品
+2020-09-07 11:56:38 [smzdm] INFO: first ten product url: https://www.smzdm.com/p/24592582/
+2020-09-07 11:56:38 [smzdm] DEBUG: current product name is: 元気森林 元气森林无糖无热量酸梅汁苏打水元气水气泡水饮料汽水480ml*15瓶装 整箱
+2020-09-07 11:56:38 [smzdm] INFO: first ten product url: https://www.smzdm.com/p/24588745/
+2020-09-07 11:56:38 [smzdm] DEBUG: current product name is: 考拉海购黑卡会员 : Perrier 巴黎水 含气柠檬味饮料 330ml*24罐装
+2020-09-07 11:56:38 [smzdm] INFO: first ten product url: https://www.smzdm.com/p/24592303/
+2020-09-07 11:56:38 [smzdm] DEBUG: current product name is: 限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶 
+2020-09-07 11:56:38 [smzdm] INFO: first ten product url: https://www.smzdm.com/p/24590289/
+2020-09-07 11:56:38 [smzdm] DEBUG: current product name is: 怡泉 Schweppes 无糖零卡 苏打水 汽水饮料400ml*12瓶 整箱装 可口可乐公司出品 新老包装随机发货 *2件
+2020-09-07 11:56:38 [smzdm] INFO: first ten product url: https://www.smzdm.com/p/24588770/
+2020-09-07 11:56:38 [smzdm] DEBUG: current product name is: 崂山 白花蛇草水风味饮料 330ml*24瓶 整箱装 中华老字号
+2020-09-07 11:56:38 [smzdm] INFO: first ten product url: https://www.smzdm.com/p/24587860/
+2020-09-07 11:56:38 [smzdm] DEBUG: current product name is: 圣培露（玻璃瓶）含气矿泉水250ml二十四瓶
+2020-09-07 11:56:38 [smzdm] INFO: first ten product url: https://www.smzdm.com/p/24586542/
+2020-09-07 11:56:38 [smzdm] DEBUG: current product name is: 新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱
+2020-09-07 11:56:38 [smzdm] INFO: first ten product url: https://www.smzdm.com/p/24586518/
+2020-09-07 11:56:38 [smzdm] DEBUG: current product name is: 考拉海购黑卡会员 : Perrier 巴黎水 含气天然矿泉水 330ml* 24瓶
+2020-09-07 11:56:38 [smzdm] INFO: first ten product url: https://www.smzdm.com/p/24586410/
+2020-09-07 11:56:38 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/p/24593283/> (referer: https://www.smzdm.com/fenlei/qipaoshui/)
+2020-09-07 11:56:38 [smzdm] INFO: 0 comments on current page
+2020-09-07 11:56:39 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/p/24588770/> (referer: https://www.smzdm.com/fenlei/qipaoshui/)
+2020-09-07 11:56:39 [smzdm] INFO: 2 comments on current page
+2020-09-07 11:56:39 [smzdm] DEBUG: -----------------值友2956480294 said: 哪里有优惠券啊？没看到 -----------------
+2020-09-07 11:56:39 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24588770/>
+{'product_name': '怡泉 Schweppes 无糖零卡 苏打水 汽水饮料400ml*12瓶 整箱装 可口可乐公司出品 新老包装随机发货 '
+                 '*2件',
+ 'user_comment': '哪里有优惠券啊？没看到',
+ 'user_name': '值友2956480294'}
+2020-09-07 11:56:39 [smzdm] DEBUG: -----------------性感小蟑螂 said: 找不到券呢 -----------------
+2020-09-07 11:56:39 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24588770/>
+{'product_name': '怡泉 Schweppes 无糖零卡 苏打水 汽水饮料400ml*12瓶 整箱装 可口可乐公司出品 新老包装随机发货 '
+                 '*2件',
+ 'user_comment': '找不到券呢',
+ 'user_name': '性感小蟑螂'}
+2020-09-07 11:56:40 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/p/24590289/> (referer: https://www.smzdm.com/fenlei/qipaoshui/)
+2020-09-07 11:56:40 [smzdm] INFO: 30 comments on current page
+2020-09-07 11:56:40 [smzdm] DEBUG: -----------------护旗先锋 said: 没货，省钱 -----------------
+2020-09-07 11:56:40 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '没货，省钱',
+ 'user_name': '护旗先锋'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------Kevin91 said: 宁夏有货~ ~ -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '宁夏有货~ ~',
+ 'user_name': 'Kevin91'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------支付成功 said: 北京没得买 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '北京没得买',
+ 'user_name': '支付成功'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------值友7159668589 said: 是我多虑了，不让买。。。 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '是我多虑了，不让买。。。',
+ 'user_name': '值友7159668589'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------JustinCarter said: 这么说上个月9.9撸没撸多一些亏大了 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '这么说上个月9.9撸没撸多一些亏大了',
+ 'user_name': 'JustinCarter'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------值友7159668589 said: 这水好喝吗？？？ -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '这水好喝吗？？？',
+ 'user_name': '值友7159668589'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------伍六七 said: 苏州没得买 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '苏州没得买',
+ 'user_name': '伍六七'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------值友5354529483 said: 安徽没得买 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '安徽没得买',
+ 'user_name': '值友5354529483'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------三更半夜去流浪 said: 该商品在该地区暂不支持销售    河南也没有！！！ -----------------
+2020-09-07 11:56:41 [root] DEBUG: Will insert following data: [['怡泉 Schweppes 无糖零卡 苏打水 汽水饮料400ml*12瓶 整箱装 可口可乐公司出品 新老包装随机发货 *2件', '值友2956480294', '哪里有优惠券啊？没看到', '2020-09-07 11:56:39'], ['怡泉 Schweppes 无糖零卡 苏打水 汽水饮料400ml*12瓶 整箱装 可口可乐公司出品 新老包装随机发货 *2件', '性感小蟑螂', '找不到券呢', '2020-09-07 11:56:39'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '护旗先锋', '没货，省钱', '2020-09-07 11:56:40'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', 'Kevin91', '宁夏有货~ ~', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '支付成功', '北京没得买', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '值友7159668589', '是我多虑了，不让买。。。', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', 'JustinCarter', '这么说上个月9.9撸没撸多一些亏大了', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '值友7159668589', '这水好喝吗？？？', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '伍六七', '苏州没得买', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '值友5354529483', '安徽没得买', '2020-09-07 11:56:41']]
+2020-09-07 11:56:41 [root] INFO: Inserted 10 comments to DB.
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '该商品在该地区暂不支持销售    河南也没有！！！',
+ 'user_name': '三更半夜去流浪'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------一大只虾饺 said: 武汉也没有 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '武汉也没有',
+ 'user_name': '一大只虾饺'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------茧蛹 said: 辽宁也不卖，这得限制多小的范围啊？ -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '辽宁也不卖，这得限制多小的范围啊？',
+ 'user_name': '茧蛹'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------晚回要赶在冬天来之前 said: 所以，哪个地区可以买到呢？ -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '所以，哪个地区可以买到呢？',
+ 'user_name': '晚回要赶在冬天来之前'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------喵呜先森 said: 广东不行zsbd -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '广东不行zsbd',
+ 'user_name': '喵呜先森'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------小峥峥 said: 是我不配了！！！ -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '是我不配了！！！',
+ 'user_name': '小峥峥'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------值友2122976455 said: 杭州也不配 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '杭州也不配',
+ 'user_name': '值友2122976455'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------来鸭快活鸭 said: 东莞不支持   -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '东莞不支持',
+ 'user_name': '来鸭快活鸭'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------任鱼子 said:   浙江也没有，乌鲁木齐倒是有 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '浙江也没有，乌鲁木齐倒是有',
+ 'user_name': '任鱼子'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------stonezhi123 said: 不支持该地区 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '不支持该地区',
+ 'user_name': 'stonezhi123'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------jsszyl said: 苏州没得买 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '苏州没得买',
+ 'user_name': 'jsszyl'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------值友8462392290 said: 8块运费！！！ -----------------
+2020-09-07 11:56:41 [root] DEBUG: Will insert following data: [['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '一大只虾饺', '武汉也没有', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '茧蛹', '辽宁也不卖，这得限制多小的范围啊？', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '晚回要赶在冬天来之前', '所以，哪个地区可以买到呢？', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '喵呜先森', '广东不行zsbd', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '小峥峥', '是我不配了！！！', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '值友2122976455', '杭州也不配', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '来鸭快活鸭', '东莞不支持', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '任鱼子', '浙江也没有，乌鲁木齐倒是有', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', 'stonezhi123', '不支持该地区', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', 'jsszyl', '苏州没得买', '2020-09-07 11:56:41']]
+2020-09-07 11:56:41 [root] INFO: Inserted 10 comments to DB.
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '8块运费！！！',
+ 'user_name': '值友8462392290'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------fanser said: 北京就没有过 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '北京就没有过',
+ 'user_name': 'fanser'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------谁爆料说明谁想买 said: 北京不配喝 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '北京不配喝',
+ 'user_name': '谁爆料说明谁想买'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------孙十万 said:   广东都没有，广西当然也🈚️ -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '广东都没有，广西当然也🈚️',
+ 'user_name': '孙十万'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------Dylandick said: 上海没得买 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '上海没得买',
+ 'user_name': 'Dylandick'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------爱思不是笔 said: 郑州没货郑州日常没货 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '郑州没货郑州日常没货',
+ 'user_name': '爱思不是笔'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------值友9726095215 said: 哈尔滨一般都无货 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '哈尔滨一般都无货',
+ 'user_name': '值友9726095215'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------caber said: 估计全中国23个省，5个自治区、4个直辖市，还有2个特别行政区，外加对岸的大型岛屿都没货 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '估计全中国23个省，5个自治区、4个直辖市，还有2个特别行政区，外加对岸的大型岛屿都没货',
+ 'user_name': 'caber'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------hello-聪 said: 该商品在该地区暂不支持销售！（天津） -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '该商品在该地区暂不支持销售！（天津）',
+ 'user_name': 'hello-聪'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------是大梦啊 said: 福建没得买 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '福建没得买',
+ 'user_name': '是大梦啊'}
+2020-09-07 11:56:41 [smzdm] DEBUG: -----------------Huang_Q said: 广州没得买 -----------------
+2020-09-07 11:56:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24590289/>
+{'product_name': '限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶',
+ 'user_comment': '广州没得买',
+ 'user_name': 'Huang_Q'}
+2020-09-07 11:56:42 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/p/24592303/> (referer: https://www.smzdm.com/fenlei/qipaoshui/)
+2020-09-07 11:56:42 [smzdm] INFO: 1 comments on current page
+2020-09-07 11:56:42 [smzdm] DEBUG: -----------------赫菲斯托斯（爆料人） said: 还有原味也是等同价位 -----------------
+2020-09-07 11:56:42 [root] DEBUG: Will insert following data: [['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', 'fanser', '北京就没有过', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '谁爆料说明谁想买', '北京不配喝', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '孙十万', '广东都没有，广西当然也🈚️', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', 'Dylandick', '上海没得买', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '爱思不是笔', '郑州没货郑州日常没货', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '值友9726095215', '哈尔滨一般都无货', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', 'caber', '估计全中国23个省，5个自治区、4个直辖市，还有2个特别行政区，外加对岸的大型岛屿都没货', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', 'hello-聪', '该商品在该地区暂不支持销售！（天津）', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', '是大梦啊', '福建没得买', '2020-09-07 11:56:41'], ['限地区 : 怡泉 Schweppes 无糖零卡 苏打水 400ml*12瓶', 'Huang_Q', '广州没得买', '2020-09-07 11:56:41']]
+2020-09-07 11:56:42 [root] INFO: Inserted 10 comments to DB.
+2020-09-07 11:56:42 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24592303/>
+{'product_name': '考拉海购黑卡会员 : Perrier 巴黎水 含气柠檬味饮料 330ml*24罐装',
+ 'user_comment': '还有原味也是等同价位',
+ 'user_name': '赫菲斯托斯（爆料人）'}
+2020-09-07 11:56:43 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/p/24588745/> (referer: https://www.smzdm.com/fenlei/qipaoshui/)
+2020-09-07 11:56:44 [smzdm] INFO: 4 comments on current page
+2020-09-07 11:56:44 [smzdm] DEBUG: -----------------buster said: 难喝的很啊 -----------------
+2020-09-07 11:56:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24588745/>
+{'product_name': '元気森林 元气森林无糖无热量酸梅汁苏打水元气水气泡水饮料汽水480ml*15瓶装 整箱',
+ 'user_comment': '难喝的很啊',
+ 'user_name': 'buster'}
+2020-09-07 11:56:44 [smzdm] DEBUG: -----------------evenly said: 没有这个卷 -----------------
+2020-09-07 11:56:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24588745/>
+{'product_name': '元気森林 元气森林无糖无热量酸梅汁苏打水元气水气泡水饮料汽水480ml*15瓶装 整箱',
+ 'user_comment': '没有这个卷',
+ 'user_name': 'evenly'}
+2020-09-07 11:56:44 [smzdm] DEBUG: -----------------hongminsu said: 填联名信用卡？ -----------------
+2020-09-07 11:56:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24588745/>
+{'product_name': '元気森林 元气森林无糖无热量酸梅汁苏打水元气水气泡水饮料汽水480ml*15瓶装 整箱',
+ 'user_comment': '填联名信用卡？',
+ 'user_name': 'hongminsu'}
+2020-09-07 11:56:44 [smzdm] DEBUG: -----------------叶CC said: 券呢？？？？？？           -----------------
+2020-09-07 11:56:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24588745/>
+{'product_name': '元気森林 元气森林无糖无热量酸梅汁苏打水元气水气泡水饮料汽水480ml*15瓶装 整箱',
+ 'user_comment': '券呢？？？？？？',
+ 'user_name': '叶CC'}
+2020-09-07 11:56:44 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/p/24592582/> (referer: https://www.smzdm.com/fenlei/qipaoshui/)
+2020-09-07 11:56:44 [smzdm] INFO: 6 comments on current page
+2020-09-07 11:56:44 [smzdm] DEBUG: -----------------可惜我是垃圾佬 said: 之前买了一箱，不好喝，没内味，气挺足 -----------------
+2020-09-07 11:56:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24592582/>
+{'product_name': '雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品',
+ 'user_comment': '之前买了一箱，不好喝，没内味，气挺足',
+ 'user_name': '可惜我是垃圾佬'}
+2020-09-07 11:56:44 [smzdm] DEBUG: -----------------值友我最帅 said: 3张运费才行。次奥 -----------------
+2020-09-07 11:56:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24592582/>
+{'product_name': '雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品',
+ 'user_comment': '3张运费才行。次奥',
+ 'user_name': '值友我最帅'}
+2020-09-07 11:56:44 [smzdm] DEBUG: -----------------羚羊怕上火 said: 正在喝，味道确实不咋地，最主要是气不足 -----------------
+2020-09-07 11:56:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24592582/>
+{'product_name': '雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品',
+ 'user_comment': '正在喝，味道确实不咋地，最主要是气不足',
+ 'user_name': '羚羊怕上火'}
+2020-09-07 11:56:44 [smzdm] DEBUG: -----------------买我的没错 said: 好像确实挺便宜的 -----------------
+2020-09-07 11:56:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24592582/>
+{'product_name': '雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品',
+ 'user_comment': '好像确实挺便宜的',
+ 'user_name': '买我的没错'}
+2020-09-07 11:56:44 [smzdm] DEBUG: -----------------伍嘉米 said: 挺好喝呀，我爱喝有味道的汽水，这个就不错，喝多了零度这个换换味道 -----------------
+2020-09-07 11:56:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24592582/>
+{'product_name': '雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品',
+ 'user_comment': '挺好喝呀，我爱喝有味道的汽水，这个就不错，喝多了零度这个换换味道',
+ 'user_name': '伍嘉米'}
+2020-09-07 11:56:44 [smzdm] DEBUG: -----------------还是赌东道 said: 这个味道咋样？ -----------------
+2020-09-07 11:56:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24592582/>
+{'product_name': '雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品',
+ 'user_comment': '这个味道咋样？',
+ 'user_name': '还是赌东道'}
+2020-09-07 11:56:46 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/p/24586410/> (referer: https://www.smzdm.com/fenlei/qipaoshui/)
+2020-09-07 11:56:46 [smzdm] INFO: 1 comments on current page
+2020-09-07 11:56:46 [smzdm] DEBUG: -----------------西红柿炒番茄zzz said: 巴黎气泡水真的是个神奇的东西，爱喝的人每天都来一瓶，不爱喝的喝一口都嫌难喝要吐一样，之前活动在京东帮同事买了四箱，草莓味西柚味西瓜味柠檬味都整了，自己也尝过了挺多味道，冰镇以后其实还是很不错的，主要是真的没啥能量，喝了也不担心长胖 -----------------
+2020-09-07 11:56:46 [root] DEBUG: Will insert following data: [['元気森林 元气森林无糖无热量酸梅汁苏打水元气水气泡水饮料汽水480ml*15瓶装 整箱', 'buster', '难喝的很啊', '2020-09-07 11:56:44'], ['元気森林 元气森林无糖无热量酸梅汁苏打水元气水气泡水饮料汽水480ml*15瓶装 整箱', 'evenly', '没有这个卷', '2020-09-07 11:56:44'], ['元気森林 元气森林无糖无热量酸梅汁苏打水元气水气泡水饮料汽水480ml*15瓶装 整箱', 'hongminsu', '填联名信用卡？', '2020-09-07 11:56:44'], ['元気森林 元气森林无糖无热量酸梅汁苏打水元气水气泡水饮料汽水480ml*15瓶装 整箱', '叶CC', '券呢？？？？？？', '2020-09-07 11:56:44'], ['雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品', '可惜我是垃圾佬', '之前买了一箱，不好喝，没内味，气挺足', '2020-09-07 11:56:44'], ['雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品', '值友我最帅', '3张运费才行。次奥', '2020-09-07 11:56:44'], ['雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品', '羚羊怕上火', '正在喝，味道确实不咋地，最主要是气不足', '2020-09-07 11:56:44'], ['雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品', '买我的没错', '好像确实挺便宜的', '2020-09-07 11:56:44'], ['雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品', '伍嘉米', '挺好喝呀，我爱喝有味道的汽水，这个就不错，喝多了零度这个换换味道', '2020-09-07 11:56:44'], ['雀巢 （Nestle）优活 蓝莓黑加仑风味无糖无热量无脂肪气泡水饮料汽水450ML*15瓶 整箱装 *3件+凑单品', '还是赌东道', '这个味道咋样？', '2020-09-07 11:56:44']]
+2020-09-07 11:56:46 [root] INFO: Inserted 10 comments to DB.
+2020-09-07 11:56:46 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586410/>
+{'product_name': '考拉海购黑卡会员 : Perrier 巴黎水 含气天然矿泉水 330ml* 24瓶',
+ 'user_comment': '巴黎气泡水真的是个神奇的东西，爱喝的人每天都来一瓶，不爱喝的喝一口都嫌难喝要吐一样，之前活动在京东帮同事买了四箱，草莓味西柚味西瓜味柠檬味都整了，自己也尝过了挺多味道，冰镇以后其实还是很不错的，主要是真的没啥能量，喝了也不担心长胖',
+ 'user_name': '西红柿炒番茄zzz'}
+2020-09-07 11:56:47 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/p/24586518/> (referer: https://www.smzdm.com/fenlei/qipaoshui/)
+2020-09-07 11:56:47 [smzdm] INFO: 12 comments on current page
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------小猪饲养员 said: 生产日期描述是今年3月到4月的，按塑料瓶的算，半年的跑的气不少啦，影响一部分口感。价格是不错，自己考虑。 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '生产日期描述是今年3月到4月的，按塑料瓶的算，半年的跑的气不少啦，影响一部分口感。价格是不错，自己考虑。',
+ 'user_name': '小猪饲养员'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------橘子大-大（爆料人） said: 还好，塑料瓶比三拳还便宜，我买了塑料和玻璃，塑料就运动时候喝，还不错的。 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '还好，塑料瓶比三拳还便宜，我买了塑料和玻璃，塑料就运动时候喝，还不错的。',
+ 'user_name': '橘子大-大（爆料人）'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------宁波阿三哥 said: 塑料瓶的跑气超级快…………没开封的也一样劝退 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '塑料瓶的跑气超级快…………没开封的也一样劝退',
+ 'user_name': '宁波阿三哥'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------值友9344682574 said: 别见怪，这是小冰 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '别见怪，这是小冰',
+ 'user_name': '值友9344682574'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------橙子橙子我是橘子 said: 没有黑卡，省钱了 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '没有黑卡，省钱了',
+ 'user_name': '橙子橙子我是橘子'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------值友2226227234 said: 没有黑卡，省钱 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '没有黑卡，省钱',
+ 'user_name': '值友2226227234'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------kimhyunyoo said: 您看清是啥商品了吗 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '您看清是啥商品了吗',
+ 'user_name': 'kimhyunyoo'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------Amoonz said: 这就是圣培露啊。同时买过好几款款气泡水，最喜欢这款 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '这就是圣培露啊。同时买过好几款款气泡水，最喜欢这款',
+ 'user_name': 'Amoonz'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------bingbingbang said: 你搞错了吧 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '你搞错了吧',
+ 'user_name': 'bingbingbang'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------值友1155066649 said: 没有黑卡，算了 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '没有黑卡，算了',
+ 'user_name': '值友1155066649'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------喜欢就去剁 said: 没有黑卡，省钱了 -----------------
+2020-09-07 11:56:47 [root] DEBUG: Will insert following data: [['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', '小猪饲养员', '生产日期描述是今年3月到4月的，按塑料瓶的算，半年的跑的气不少啦，影响一部分口感。价格是不错，自己考虑。', '2020-09-07 11:56:47'], ['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', '橘子大-大（爆料人）', '还好，塑料瓶比三拳还便宜，我买了塑料和玻璃，塑料就运动时候喝，还不错的。', '2020-09-07 11:56:47'], ['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', '宁波阿三哥', '塑料瓶的跑气超级快…………没开封的也一样劝退', '2020-09-07 11:56:47'], ['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', '值友9344682574', '别见怪，这是小冰', '2020-09-07 11:56:47'], ['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', '橙子橙子我是橘子', '没有黑卡，省钱了', '2020-09-07 11:56:47'], ['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', '值友2226227234', '没有黑卡，省钱', '2020-09-07 11:56:47'], ['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', 'kimhyunyoo', '您看清是啥商品了吗', '2020-09-07 11:56:47'], ['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', 'Amoonz', '这就是圣培露啊。同时买过好几款款气泡水，最喜欢这款', '2020-09-07 11:56:47'], ['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', 'bingbingbang', '你搞错了吧', '2020-09-07 11:56:47'], ['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', '值友1155066649', '没有黑卡，算了', '2020-09-07 11:56:47']]
+2020-09-07 11:56:47 [root] INFO: Inserted 10 comments to DB.
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '没有黑卡，省钱了',
+ 'user_name': '喜欢就去剁'}
+2020-09-07 11:56:47 [smzdm] DEBUG: -----------------小冰 said: 认知度很高的一款充气矿泉水，一直被人和圣培露放在一起比较了很多年 -----------------
+2020-09-07 11:56:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24586518/>
+{'product_name': '新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱',
+ 'user_comment': '认知度很高的一款充气矿泉水，一直被人和圣培露放在一起比较了很多年',
+ 'user_name': '小冰'}
+2020-09-07 11:56:48 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/p/24586542/> (referer: https://www.smzdm.com/fenlei/qipaoshui/)
+2020-09-07 11:56:48 [smzdm] INFO: 0 comments on current page
+2020-09-07 11:56:49 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.smzdm.com/p/24587860/> (referer: https://www.smzdm.com/fenlei/qipaoshui/)
+2020-09-07 11:56:49 [smzdm] INFO: 1 comments on current page
+2020-09-07 11:56:49 [smzdm] DEBUG: -----------------123syt said:   90多哪好价了你指我看看。 -----------------
+2020-09-07 11:56:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.smzdm.com/p/24587860/>
+{'product_name': '崂山 白花蛇草水风味饮料 330ml*24瓶 整箱装 中华老字号',
+ 'user_comment': '90多哪好价了你指我看看。',
+ 'user_name': '123syt'}
+2020-09-07 11:56:49 [scrapy.core.engine] INFO: Closing spider (finished)
+2020-09-07 11:56:49 [root] DEBUG: Will insert following data: [['新鲜到货S.PELLEGRINO 圣培露 含气天然矿泉水 500ml 24瓶/箱', '小冰', '认知度很高的一款充气矿泉水，一直被人和圣培露放在一起比较了很多年', '2020-09-07 11:56:47'], ['崂山 白花蛇草水风味饮料 330ml*24瓶 整箱装 中华老字号', '123syt', '90多哪好价了你指我看看。', '2020-09-07 11:56:49']]
+2020-09-07 11:56:49 [root] INFO: Inserted 2 comments to DB.
+2020-09-07 11:56:49 [root] INFO: DB connection closed.
+2020-09-07 11:56:49 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 6018,
+ 'downloader/request_count': 11,
+ 'downloader/request_method_count/GET': 11,
+ 'downloader/response_bytes': 454265,
+ 'downloader/response_count': 11,
+ 'downloader/response_status_count/200': 11,
+ 'elapsed_time_seconds': 12.978742,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2020, 9, 7, 3, 56, 49, 675105),
+ 'item_scraped_count': 57,
+ 'log_count/DEBUG': 141,
+ 'log_count/INFO': 38,
+ 'request_depth_max': 1,
+ 'response_received_count': 11,
+ 'scheduler/dequeued': 11,
+ 'scheduler/dequeued/memory': 11,
+ 'scheduler/enqueued': 11,
+ 'scheduler/enqueued/memory': 11,
+ 'start_time': datetime.datetime(2020, 9, 7, 3, 56, 36, 696363)}
+2020-09-07 11:56:49 [scrapy.core.engine] INFO: Spider closed (finished)
